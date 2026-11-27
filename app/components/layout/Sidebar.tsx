@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {usePathname} from 'next/navigation';
+import {usePathname, useRouter} from 'next/navigation';
 
 export default function Sidebar() {
     interface NavItem {
@@ -19,6 +19,18 @@ export default function Sidebar() {
     ];
 
     const pathname = usePathname();
+    const router = useRouter();
+
+    async function handleLogout() {
+        const response = await fetch('http://localhost:8000/auth/logout', {
+            method: 'POST',
+            credentials: 'include',
+        })
+        if (!response.ok) {
+            throw new Error(`Failed to logout: ${response.status}`);
+        }
+        router.replace('/login');
+    }
 
     return (
         <aside className="w-64 flex flex-col shrink-0 bg-white rounded-lg m-4 p-4">
@@ -37,8 +49,14 @@ export default function Sidebar() {
                     >
                         {link.label}
                     </Link>
-                    </nav>
-                    <button className="mt-auto w-full h-12 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700" type="button">Выход</button>
-                    </aside>
-                    )
-                }
+                ))}
+            </nav>
+            <button
+                className="mt-auto w-full h-12 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                type="button"
+                onClick={handleLogout}
+            >Выход
+            </button>
+        </aside>
+    )
+}
