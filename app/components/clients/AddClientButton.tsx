@@ -51,7 +51,7 @@ return (
             onClick={() => {
                 dialogRef.current?.setAttribute('closedby', 'any')
                 dialogRef.current?.showModal()}}
-                className="inline-flex items-center justify-center bg-indigo-600 h-10 px-4 rounded-lg transition-colors duration-150 hover:bg-indigo-900 text-white"
+                className="cursor-pointer inline-flex items-center justify-center bg-indigo-600 h-10 px-4 rounded-lg transition-colors duration-150 hover:bg-indigo-900 text-white"
         >+ Добавить клиента
         </button>
         <dialog ref={dialogRef}
