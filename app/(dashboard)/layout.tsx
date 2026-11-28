@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import type { User } from '@/types/user';
 import Header from '@/app/components/layout/Header'
 
+export const instant = false;
+
 export default async function DashboardLayout({
     children
 }:

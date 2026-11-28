@@ -39,7 +39,10 @@ export default async function ClientsPage() {
                     <thead className="bg-slate-100">
                     <tr className="font-bold">
                         <th className="border-b border-slate-200 p-4 text-left">Имя</th>
-                        <th className="border-b border-slate-100 p-4 text-sm text-left">ID</th>
+                        <th className="border-b border-slate-100 p-4 text-sm text-left">Контактное лицо</th>
+                        <th className="border-b border-slate-100 p-4 text-sm text-left">Email</th>
+                        <th className="border-b border-slate-100 p-4 text-sm text-left">Телефон</th>
+                        <th className="border-b border-slate-100 p-4 text-sm text-left">Заметки</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,7 +50,10 @@ export default async function ClientsPage() {
                         data.map((client) => (
                             <tr key={client.id} className="duration-150 hover:bg-slate-100 transition-colors">
                                 <td className="border-b border-slate-200 p-4">{client.name}</td>
-                                <td className=" border-b border-slate-200 p-4">{client.id}</td>
+                                <td className=" border-b border-slate-200 p-4">{client.contact_name ?? '—'}</td>
+                                <td className=" border-b border-slate-200 p-4">{client.email ?? '—'}</td>
+                                <td className=" border-b border-slate-200 p-4">{client.phone ?? '—'}</td>
+                                <td className=" border-b border-slate-200 p-4">{client.notes ?? '—'}</td>
                             </tr>
                         )) :
                         <tr>
